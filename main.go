@@ -14,6 +14,7 @@ import (
 var redColor = color.RGBA{R: 255, G: 0, B: 0, A: 0}
 var greenColor = color.RGBA{R: 0, G: 255, B: 0, A: 0}
 var orangeColor = color.RGBA{R: 255, G: 165, B: 0, A: 0}
+var grayColor = color.RGBA{R: 220, G: 220, B: 220, A: 0}
 
 const preferenceCurrentTutorial = "currentTutorial"
 
@@ -67,7 +68,7 @@ func makeNav(setTutorial func(menu *MenuField), loadPrevious bool) fyne.CanvasOb
 			case "ERROR":
 				obj.(*canvas.Text).Color = redColor
 			default:
-				obj.(*canvas.Text).Color = redColor
+				obj.(*canvas.Text).Color = grayColor
 			}
 
 			// obj.(*widget.Label).SetText(m.Title)

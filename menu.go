@@ -9,7 +9,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
-	"github.com/adarocket/proto"
+	"github.com/adarocket/proto/proto"
 )
 
 // MenuField -
@@ -197,6 +197,26 @@ func informationScreen(w fyne.Window, uuid string) fyne.CanvasObject {
 			widget.NewFormItem("Live stake", widget.NewLabel(fmt.Sprintf("%d", resp.Statistic.StakeInfo.LiveStake))),
 			widget.NewFormItem("Active stake", widget.NewLabel(fmt.Sprintf("%d", resp.Statistic.StakeInfo.ActiveStake))),
 			widget.NewFormItem("Pledge", widget.NewLabel(fmt.Sprintf("%d", resp.Statistic.StakeInfo.Pledge))),
+		)
+		items = append(items, item, widget.NewSeparator())
+	}
+
+	if resp.Statistic.ChiaNodeFarming != nil {
+		item = widget.NewForm(
+			widget.NewFormItem("Chia Node Farming", widget.NewLabel("")),
+
+			widget.NewFormItem("Farming status", widget.NewLabel(resp.Statistic.ChiaNodeFarming.FarmingStatus)),
+
+			widget.NewFormItem("Total chia farmed", widget.NewLabel(fmt.Sprintf("%f", resp.Statistic.ChiaNodeFarming.TotalChiaFarmed))),
+			widget.NewFormItem("User transaction fees", widget.NewLabel(fmt.Sprintf("%f", resp.Statistic.ChiaNodeFarming.UserTransactionFees))),
+			widget.NewFormItem("Block rewards", widget.NewLabel(fmt.Sprintf("%f", resp.Statistic.ChiaNodeFarming.BlockRewards))),
+
+			widget.NewFormItem("Last height farmed", widget.NewLabel(fmt.Sprintf("%d", resp.Statistic.ChiaNodeFarming.LastHeightFarmed))),
+			widget.NewFormItem("Plot count", widget.NewLabel(fmt.Sprintf("%d", resp.Statistic.ChiaNodeFarming.PlotCount))),
+			widget.NewFormItem("Total size of plots", widget.NewLabel(fmt.Sprintf("%d", resp.Statistic.ChiaNodeFarming.TotalSizeOfPlots))),
+			widget.NewFormItem("Estimated network space", widget.NewLabel(fmt.Sprintf("%d", resp.Statistic.ChiaNodeFarming.EstimatedNetworkSpace))),
+
+			widget.NewFormItem("Expected time to win", widget.NewLabel(resp.Statistic.ChiaNodeFarming.ExpectedTimeToWin)),
 		)
 		items = append(items, item, widget.NewSeparator())
 	}

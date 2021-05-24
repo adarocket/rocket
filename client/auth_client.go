@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	pb "github.com/adarocket/proto"
+	pb "github.com/adarocket/proto/proto"
 
 	"google.golang.org/grpc"
 )

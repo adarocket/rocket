@@ -1,11 +1,11 @@
 module adarocket/rocket
 
-go 1.15
+go 1.16
 
-replace github.com/adarocket/proto => /home/shpileuski/go/src/github.com/adarocket/proto
+replace github.com/adarocket/proto => /Users/dev/projects/adarocket/proto
+
 require (
-	fyne.io/fyne/v2 v2.0.0
-	google.golang.org/grpc v1.35.0
-	github.com/adarocket/proto v0.2.0
+	fyne.io/fyne/v2 v2.0.3
+	github.com/adarocket/proto v0.3.0
+	google.golang.org/grpc v1.37.1
 )
-
