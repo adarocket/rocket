@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	pb "github.com/adarocket/proto/proto"
+	pb "github.com/adarocket/proto/proto-gen/auth"
 
 	"google.golang.org/grpc"
 )
@@ -12,8 +12,6 @@ import (
 // AuthClient is a client to call authentication RPC
 type AuthClient struct {
 	service pb.AuthServiceClient
-	// username string
-	// password string
 }
 
 // NewAuthClient returns a new auth client

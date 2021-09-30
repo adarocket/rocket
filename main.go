@@ -1,7 +1,10 @@
 package main
 
 import (
+	"adarocket/rocket/client"
+	"google.golang.org/grpc"
 	"image/color"
+	"log"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -21,7 +24,11 @@ const preferenceCurrentTutorial = "currentTutorial"
 var topWindow fyne.Window
 
 func main() {
-	setupAuthClient()
+	clientConn, err := grpc.Dial("165.22.92.139:5300", grpc.WithInsecure())
+	if err != nil {
+		log.Fatal("cannot dial server: ", err)
+	}
+	authClient = client.NewAuthClient(clientConn)
 
 	a := app.New()
 	a.SetIcon(theme.FyneLogo())
