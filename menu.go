@@ -340,10 +340,8 @@ func getNodesInfo(addIndex bool) error {
 				log.Println(err)
 				continue
 			}
-			if response.NodeAuthData.Uuid == "" {
-				continue
-			}
 
+			response.NodeAuthData = node
 			cardanoNodes[node.Uuid] = response
 
 			var menuField MenuField
