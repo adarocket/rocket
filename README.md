@@ -1,6 +1,7 @@
-# Rocket
+## Rocket
 Programm for monitoring nodes data.
-## How to install rocket
+## How to run Rocket
+
 ### Installing Go
 Rocket requires Go 1.13 to compile, please refer to the [official documentation](https://go.dev/doc/install) for how to install Go in your system.
 
@@ -15,7 +16,7 @@ fyne install
 ```
 ### Creating binaries
 ```
-fyne package -os *your os(windows/darwin/...)* -appID my.domain.appname
+fyne package -os *your os(windows/darwin/...)*
 ```
 
 export ANDROID_NDK_HOME=/home/shpileuski/Android/Sdk/ndk/21.3.6528147
