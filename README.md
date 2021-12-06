@@ -1,5 +1,5 @@
 ## Rocket
-Programm for monitoring nodes data.
+Program for monitoring nodes data.
 ## How to run Rocket
 
 ### Installing Go
