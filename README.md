@@ -1,3 +1,5 @@
+# Rocket
+Programm for monitoring nodes data.
 ## How to install rocket
 ### Installing Go
 Rocket requires Go 1.13 to compile, please refer to the [official documentation](https://go.dev/doc/install) for how to install Go in your system.
