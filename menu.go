@@ -76,6 +76,18 @@ func informationScreen(w fyne.Window, uuid string) fyne.CanvasObject {
 	var items []fyne.CanvasObject
 	item := new(widget.Form)
 
+	/*if resp.NodeAuthData != nil {
+		item = widget.NewForm(
+			widget.NewFormItem("Node Auth Data", widget.NewLabel("")),
+
+			widget.NewFormItem("Ticker", widget.NewLabel(resp.NodeAuthData.Ticker)),
+			widget.NewFormItem("Uuid", widget.NewLabel(resp.NodeAuthData.Uuid)),
+			widget.NewFormItem("Blockchain", widget.NewLabel(resp.NodeAuthData.Blockchain)),
+		)
+
+		items = append(items, item, widget.NewSeparator())
+	}*/
+
 	if resp.Statistic.NodeBasicData != nil {
 		item = widget.NewForm(
 			widget.NewFormItem("Node Basic Data", widget.NewLabel("")),
@@ -266,7 +278,7 @@ func loginScreen(w fyne.Window, a fyne.App) fyne.CanvasObject {
 						return
 					}
 
-					setupInterceptorAndClient(token, "165.22.92.139:5300")
+					setupInterceptorAndClient(token, "178.124.167.214:5300")
 
 					nodeInfoMap = make(map[string]*cardano.SaveStatisticRequest)
 					getNodesInfo(true)
@@ -334,7 +346,7 @@ func getNodesInfo(addIndex bool) error {
 	cardanoNodes := make(map[string]*cardano.SaveStatisticRequest, 10)
 	for _, node := range resp.NodeAuthData {
 		switch node.Blockchain {
-		case "cardano":
+		case "":
 			response, err := cardanoClient.GetStatistic(node.Uuid)
 			if err != nil {
 				log.Println(err)
