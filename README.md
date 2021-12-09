@@ -5,9 +5,12 @@ Program for monitoring nodes data.
 ### Installing Go
 Rocket requires Go 1.13 to compile, please refer to the [official documentation](https://go.dev/doc/install) for how to install Go in your system.
 
-### Installing Rocket:
+### Cloning Rocket:
+cd to your catalog
+copy url of progect Rocket
 ```
-go get github.com/adarocket/rocket 
+git init
+git clone *url* 
 ```
 ### Installing Fyne:
 ```
@@ -20,7 +23,8 @@ fyne package -os *your os(windows/darwin/...)* -icon icon.png
 ```
 
 ### Creating binaries for android
+You need docker and go >= 1.13
 ```
-export ANDROID_NDK_HOME=/home/shpileuski/Android/Sdk/ndk/21.3.6528147
-fyne package -os android -appID com.example.myapp -icon icon.png
+go get github.com/fyne-io/fyne-cross
+fyne-cross android -app-id rocket.android.app -icon icon.png
 ```
