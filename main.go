@@ -1,17 +1,13 @@
 package main
 
 import (
-	"adarocket/rocket/client"
-	"google.golang.org/grpc"
-	"image/color"
-	"log"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	"image/color"
 )
 
 var redColor = color.RGBA{R: 255, G: 0, B: 0, A: 0}
@@ -24,12 +20,6 @@ const preferenceCurrentTutorial = "currentTutorial"
 var topWindow fyne.Window
 
 func main() {
-	clientConn, err := grpc.Dial("178.124.167.214:5300", grpc.WithInsecure())
-	if err != nil {
-		log.Fatal("cannot dial server: ", err)
-	}
-	authClient = client.NewAuthClient(clientConn)
-
 	a := app.New()
 	a.SetIcon(theme.FyneLogo())
 	// a.Settings().SetTheme(theme.DarkTheme())

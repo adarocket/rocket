@@ -258,10 +258,14 @@ func loginScreen(w fyne.Window, a fyne.App) fyne.CanvasObject {
 	a.Settings().SetTheme(theme.DarkTheme())
 
 	usernameField := widget.NewEntry()
+	urlField := widget.NewEntry()
 	passwordField := widget.NewPasswordEntry()
 
 	return container.NewCenter(
 		container.NewVBox(
+			widget.NewForm(
+				widget.NewFormItem("url", urlField),
+			),
 			widget.NewForm(
 				widget.NewFormItem("User name", usernameField),
 				widget.NewFormItem("Password", passwordField),
@@ -270,15 +274,21 @@ func loginScreen(w fyne.Window, a fyne.App) fyne.CanvasObject {
 				widget.NewButtonWithIcon("Cancel", theme.CancelIcon(), func() {
 					a.Quit()
 				}),
-
+				//addr "178.124.167.214:5300"
 				widget.NewButtonWithIcon("Submit", theme.ConfirmIcon(), func() {
+					clientConn, err := grpc.Dial(urlField.Text, grpc.WithInsecure())
+					if err != nil {
+						log.Fatal("cannot dial server: ", err)
+					}
+					authClient = client.NewAuthClient(clientConn)
+
 					token, err := authClient.Login(usernameField.Text, passwordField.Text)
 					if err != nil {
 						log.Println(err.Error())
 						return
 					}
 
-					setupInterceptorAndClient(token, "178.124.167.214:5300")
+					setupInterceptorAndClient(token, urlField.Text)
 
 					nodeInfoMap = make(map[string]*cardano.SaveStatisticRequest)
 					getNodesInfo(true)
