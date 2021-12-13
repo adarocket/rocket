@@ -9,8 +9,7 @@ Rocket requires Go 1.13 to compile, please refer to the [official documentation]
 cd to your catalog
 copy url of progect Rocket
 ```
-git init
-git clone *url* 
+git clone github.com/adarocket/rocket 
 ```
 ### Installing Fyne:
 ```
@@ -19,7 +18,13 @@ fyne install
 ```
 ### Creating binaries for PC
 ```
-fyne package -os *your os(windows/darwin/...)* -icon icon.png
+fyne package -os windows -icon icon.png
+```
+```
+fyne package -os darwin -icon icon.png
+```
+```
+fyne package -os linux -icon icon.png
 ```
 
 ### Creating binaries for android
